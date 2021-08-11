@@ -27,5 +27,5 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: melemelem/act:latest
+        tags: melemelem/act:udated
     
