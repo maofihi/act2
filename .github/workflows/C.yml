@@ -17,15 +17,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install pylint
-    - name: Login to DockerHub
-      uses: docker/login-action@v1 
+    - uses: mr-smithers-excellent/docker-build-push@v5
+      name: Build & push Docker image
       with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
-    - name: Build and push
-      id: docker_build
-      uses: docker/build-push-action@v2
-      with:
-        push: true
-        tags: melemelem/act:udated
+        image: melemelem/act
+        tags: v1, latest
+        registry: Docker.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
     
